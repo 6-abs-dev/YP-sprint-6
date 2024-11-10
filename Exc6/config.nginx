@@ -14,12 +14,7 @@ http {
        location / {
            proxy_pass http://backend_servers;
            limit_req zone=api_limit burst=5 nodelay;
-           error_page 429 = @rate_limited;
-       }
-
-       location @rate_limited {
-           add_header Retry-After 60;
-           return 429;
+           limit_req_status 429;
        }
    }
 }
