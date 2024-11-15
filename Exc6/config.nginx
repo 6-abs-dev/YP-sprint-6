@@ -13,7 +13,7 @@ http {
 
        location / {
            proxy_pass http://backend_servers;
-           limit_req zone=api_limit burst=5 nodelay;
+           limit_req zone=api_limit nodelay;
            limit_req_status 429;
        }
    }
